@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BizPulse complete flow</title>
+<style>
+  body { margin: 0; padding: 24px 16px; background: #fff; color: #1f1f1d; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
+  p.sub { margin: 0 0 16px; color: #5f5e5a; font-size: 14px; }
+  svg { width: 100%; height: auto; display: block; }
+  .t { font-size: 14px; fill: #1f1f1d; } .ts { font-size: 12px; fill: #5f5e5a; } .th { font-size: 14px; font-weight: 500; fill: #1f1f1d; }
+  .box rect { fill: #f1efe8; stroke: #888780; } .box text.th { fill: #2c2c2a; } .box text.ts { fill: #5f5e5a; }
+  .arr { stroke: #5f5e5a; stroke-width: 1.5; fill: none; }
+  .c-gray rect { fill: #F1EFE8; stroke: #5F5E5A; } .c-gray .th { fill: #444441; } .c-gray .ts { fill: #5F5E5A; }
+  .c-teal rect { fill: #E1F5EE; stroke: #0F6E56; } .c-teal .th { fill: #085041; } .c-teal .ts { fill: #0F6E56; }
+  .c-purple rect { fill: #EEEDFE; stroke: #534AB7; } .c-purple .th { fill: #3C3489; } .c-purple .ts { fill: #534AB7; }
+  .c-coral rect { fill: #FAECE7; stroke: #993C1D; } .c-coral .th { fill: #712B13; } .c-coral .ts { fill: #993C1D; }
+  .c-green rect { fill: #EAF3DE; stroke: #3B6D11; } .c-green .th { fill: #27500A; } .c-green .ts { fill: #3B6D11; }
+  .c-amber rect { fill: #FAEEDA; stroke: #854F0B; } .c-amber .th { fill: #633806; } .c-amber .ts { fill: #854F0B; }
+  .c-red rect { fill: #FCEBEB; stroke: #A32D2D; } .c-red .th { fill: #791F1F; } .c-red .ts { fill: #A32D2D; }
+  .c-purple > rect:first-child, .c-coral > rect:first-child { stroke-width: 0.5; }
+  .tb rect { fill: #ffffff; stroke: #0F6E56; stroke-width: 0.5; } .tb text { font-size: 12px; fill: #085041; }
+  rect { stroke-width: 0.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>BizPulse complete flow</h1>
+<p class="sub">Owner to report. Modules 1 and 2 are expanded into their individual tests (1.1 to 1.15 and 2.1 to 2.18).</p>
+<svg viewBox="0 0 680 1640" role="img" aria-label="BizPulse complete flow diagram">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<g class="box"><rect x="240" y="24" width="200" height="40" rx="8"/><text class="th" x="340" y="44" text-anchor="middle" dominant-baseline="central">Business owner</text></g>
+<line x1="340" y1="64" x2="340" y2="86" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="200" y="88" width="280" height="52" rx="8"/><text class="th" x="340" y="106" text-anchor="middle" dominant-baseline="central">Next.js frontend</text><text class="ts" x="340" y="125" text-anchor="middle" dominant-baseline="central">Login, business, pick modules</text></g>
+<line x1="340" y1="140" x2="340" y2="162" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="200" y="164" width="280" height="52" rx="8"/><text class="th" x="340" y="182" text-anchor="middle" dominant-baseline="central">Express API</text><text class="ts" x="340" y="201" text-anchor="middle" dominant-baseline="central">Auth, businesses, analyses</text></g>
+<line x1="480" y1="190" x2="518" y2="190" class="arr" marker-end="url(#arrow)"/>
+<g class="c-gray"><rect x="520" y="164" width="120" height="52" rx="8"/><text class="th" x="580" y="182" text-anchor="middle" dominant-baseline="central">MongoDB</text><text class="ts" x="580" y="201" text-anchor="middle" dominant-baseline="central">Stores all results</text></g>
+<line x1="340" y1="216" x2="340" y2="238" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="200" y="240" width="280" height="52" rx="8"/><text class="th" x="340" y="258" text-anchor="middle" dominant-baseline="central">Create job</text><text class="ts" x="340" y="277" text-anchor="middle" dominant-baseline="central">Quota, duplicate check, cache</text></g>
+<line x1="340" y1="292" x2="340" y2="314" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="200" y="316" width="280" height="52" rx="8"/><text class="th" x="340" y="334" text-anchor="middle" dominant-baseline="central">Job runner</text><text class="ts" x="340" y="353" text-anchor="middle" dominant-baseline="central">3 modules at a time, live progress</text></g>
+<line x1="340" y1="368" x2="340" y2="392" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple"><rect x="40" y="394" width="600" height="774" rx="16"/><text class="th" x="60" y="414" dominant-baseline="central">Layer 1: analysis modules collect evidence</text></g>
+<g class="c-teal"><rect x="56" y="430" width="568" height="250" rx="12"/><text class="th" x="72" y="450" dominant-baseline="central">Module 1: Website performance (15 tests)</text></g>
+<g class="tb"><rect x="72" y="466" width="172" height="34" rx="6"/><text x="82" y="483" dominant-baseline="central"><tspan font-weight="500">1.1</tspan> Website availability</text></g>
+<g class="tb"><rect x="254" y="466" width="172" height="34" rx="6"/><text x="264" y="483" dominant-baseline="central"><tspan font-weight="500">1.2</tspan> Server response time</text></g>
+<g class="tb"><rect x="436" y="466" width="172" height="34" rx="6"/><text x="446" y="483" dominant-baseline="central"><tspan font-weight="500">1.3</tspan> Homepage loading speed</text></g>
+<g class="tb"><rect x="72" y="508" width="172" height="34" rx="6"/><text x="82" y="525" dominant-baseline="central"><tspan font-weight="500">1.4</tspan> Mobile performance</text></g>
+<g class="tb"><rect x="254" y="508" width="172" height="34" rx="6"/><text x="264" y="525" dominant-baseline="central"><tspan font-weight="500">1.5</tspan> Desktop performance</text></g>
+<g class="tb"><rect x="436" y="508" width="172" height="34" rx="6"/><text x="446" y="525" dominant-baseline="central"><tspan font-weight="500">1.6</tspan> Largest Contentful Paint</text></g>
+<g class="tb"><rect x="72" y="550" width="172" height="34" rx="6"/><text x="82" y="567" dominant-baseline="central"><tspan font-weight="500">1.7</tspan> Interaction to Next Paint</text></g>
+<g class="tb"><rect x="254" y="550" width="172" height="34" rx="6"/><text x="264" y="567" dominant-baseline="central"><tspan font-weight="500">1.8</tspan> Layout shift (CLS)</text></g>
+<g class="tb"><rect x="436" y="550" width="172" height="34" rx="6"/><text x="446" y="567" dominant-baseline="central"><tspan font-weight="500">1.9</tspan> Image optimization</text></g>
+<g class="tb"><rect x="72" y="592" width="172" height="34" rx="6"/><text x="82" y="609" dominant-baseline="central"><tspan font-weight="500">1.10</tspan> JavaScript and CSS</text></g>
+<g class="tb"><rect x="254" y="592" width="172" height="34" rx="6"/><text x="264" y="609" dominant-baseline="central"><tspan font-weight="500">1.11</tspan> Browser caching</text></g>
+<g class="tb"><rect x="436" y="592" width="172" height="34" rx="6"/><text x="446" y="609" dominant-baseline="central"><tspan font-weight="500">1.12</tspan> Compression</text></g>
+<g class="tb"><rect x="72" y="634" width="172" height="34" rx="6"/><text x="82" y="651" dominant-baseline="central"><tspan font-weight="500">1.13</tspan> Broken internal links</text></g>
+<g class="tb"><rect x="254" y="634" width="172" height="34" rx="6"/><text x="264" y="651" dominant-baseline="central"><tspan font-weight="500">1.14</tspan> Mobile viewport</text></g>
+<g class="tb"><rect x="436" y="634" width="172" height="34" rx="6"/><text x="446" y="651" dominant-baseline="central"><tspan font-weight="500">1.15</tspan> Redirect performance</text></g>
+<g class="c-teal"><rect x="56" y="696" width="568" height="292" rx="12"/><text class="th" x="72" y="716" dominant-baseline="central">Module 2: SEO analysis (18 tests)</text></g>
+<g class="tb"><rect x="72" y="732" width="172" height="34" rx="6"/><text x="82" y="749" dominant-baseline="central"><tspan font-weight="500">2.1</tspan> Title tag</text></g>
+<g class="tb"><rect x="254" y="732" width="172" height="34" rx="6"/><text x="264" y="749" dominant-baseline="central"><tspan font-weight="500">2.2</tspan> Meta description</text></g>
+<g class="tb"><rect x="436" y="732" width="172" height="34" rx="6"/><text x="446" y="749" dominant-baseline="central"><tspan font-weight="500">2.3</tspan> H1 heading</text></g>
+<g class="tb"><rect x="72" y="774" width="172" height="34" rx="6"/><text x="82" y="791" dominant-baseline="central"><tspan font-weight="500">2.4</tspan> H2 to H6 structure</text></g>
+<g class="tb"><rect x="254" y="774" width="172" height="34" rx="6"/><text x="264" y="791" dominant-baseline="central"><tspan font-weight="500">2.5</tspan> Image alt text</text></g>
+<g class="tb"><rect x="436" y="774" width="172" height="34" rx="6"/><text x="446" y="791" dominant-baseline="central"><tspan font-weight="500">2.6</tspan> XML sitemap</text></g>
+<g class="tb"><rect x="72" y="816" width="172" height="34" rx="6"/><text x="82" y="833" dominant-baseline="central"><tspan font-weight="500">2.7</tspan> Robots.txt</text></g>
+<g class="tb"><rect x="254" y="816" width="172" height="34" rx="6"/><text x="264" y="833" dominant-baseline="central"><tspan font-weight="500">2.8</tspan> Canonical tags</text></g>
+<g class="tb"><rect x="436" y="816" width="172" height="34" rx="6"/><text x="446" y="833" dominant-baseline="central"><tspan font-weight="500">2.9</tspan> Internal linking</text></g>
+<g class="tb"><rect x="72" y="858" width="172" height="34" rx="6"/><text x="82" y="875" dominant-baseline="central"><tspan font-weight="500">2.10</tspan> SEO-friendly URLs</text></g>
+<g class="tb"><rect x="254" y="858" width="172" height="34" rx="6"/><text x="264" y="875" dominant-baseline="central"><tspan font-weight="500">2.11</tspan> Structured data</text></g>
+<g class="tb"><rect x="436" y="858" width="172" height="34" rx="6"/><text x="446" y="875" dominant-baseline="central"><tspan font-weight="500">2.12</tspan> Open Graph</text></g>
+<g class="tb"><rect x="72" y="900" width="172" height="34" rx="6"/><text x="82" y="917" dominant-baseline="central"><tspan font-weight="500">2.13</tspan> Duplicate titles</text></g>
+<g class="tb"><rect x="254" y="900" width="172" height="34" rx="6"/><text x="264" y="917" dominant-baseline="central"><tspan font-weight="500">2.14</tspan> Broken external links</text></g>
+<g class="tb"><rect x="436" y="900" width="172" height="34" rx="6"/><text x="446" y="917" dominant-baseline="central"><tspan font-weight="500">2.15</tspan> Mobile SEO</text></g>
+<g class="tb"><rect x="72" y="942" width="172" height="34" rx="6"/><text x="82" y="959" dominant-baseline="central"><tspan font-weight="500">2.16</tspan> Hreflang</text></g>
+<g class="tb"><rect x="254" y="942" width="172" height="34" rx="6"/><text x="264" y="959" dominant-baseline="central"><tspan font-weight="500">2.17</tspan> Noindex and nofollow</text></g>
+<g class="tb"><rect x="436" y="942" width="172" height="34" rx="6"/><text x="446" y="959" dominant-baseline="central"><tspan font-weight="500">2.18</tspan> Search Console</text></g>
+<g class="c-gray"><rect x="56" y="1004" width="568" height="152" rx="12"/><text class="th" x="72" y="1024" dominant-baseline="central">Modules 3 to 10 (not split into tests yet)</text></g>
+<g class="c-gray"><rect x="70" y="1040" width="126" height="48" rx="8"/><text class="th" x="133" y="1056" text-anchor="middle" dominant-baseline="central">Mobile</text><text class="ts" x="133" y="1074" text-anchor="middle" dominant-baseline="central">Viewport, taps</text></g>
+<g class="c-gray"><rect x="210" y="1040" width="126" height="48" rx="8"/><text class="th" x="273" y="1056" text-anchor="middle" dominant-baseline="central">Security</text><text class="ts" x="273" y="1074" text-anchor="middle" dominant-baseline="central">Headers, TLS</text></g>
+<g class="c-gray"><rect x="350" y="1040" width="126" height="48" rx="8"/><text class="th" x="413" y="1056" text-anchor="middle" dominant-baseline="central">Profile</text><text class="ts" x="413" y="1074" text-anchor="middle" dominant-baseline="central">Google listing</text></g>
+<g class="c-gray"><rect x="490" y="1040" width="126" height="48" rx="8"/><text class="th" x="553" y="1056" text-anchor="middle" dominant-baseline="central">Social</text><text class="ts" x="553" y="1074" text-anchor="middle" dominant-baseline="central">Profile links</text></g>
+<g class="c-gray"><rect x="70" y="1096" width="126" height="48" rx="8"/><text class="th" x="133" y="1112" text-anchor="middle" dominant-baseline="central">Competitor</text><text class="ts" x="133" y="1130" text-anchor="middle" dominant-baseline="central">Side by side</text></g>
+<g class="c-gray"><rect x="210" y="1096" width="126" height="48" rx="8"/><text class="th" x="273" y="1112" text-anchor="middle" dominant-baseline="central">Content</text><text class="ts" x="273" y="1130" text-anchor="middle" dominant-baseline="central">Readability</text></g>
+<g class="c-gray"><rect x="350" y="1096" width="126" height="48" rx="8"/><text class="th" x="413" y="1112" text-anchor="middle" dominant-baseline="central">Lead gen</text><text class="ts" x="413" y="1130" text-anchor="middle" dominant-baseline="central">Forms, CTAs</text></g>
+<g class="c-gray"><rect x="490" y="1096" width="126" height="48" rx="8"/><text class="th" x="553" y="1112" text-anchor="middle" dominant-baseline="central">Reputation</text><text class="ts" x="553" y="1130" text-anchor="middle" dominant-baseline="central">Reviews</text></g>
+<g transform="translate(0,598)">
+<line x1="340" y1="570" x2="340" y2="594" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="170" y="596" width="340" height="52" rx="8"/><text class="th" x="340" y="614" text-anchor="middle" dominant-baseline="central">Candidate findings</text><text class="ts" x="340" y="633" text-anchor="middle" dominant-baseline="central">From safe HTTP, PageSpeed, Places, browser</text></g>
+<line x1="340" y1="648" x2="340" y2="670" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-coral"><rect x="40" y="672" width="600" height="112" rx="16"/><text class="th" x="60" y="692" dominant-baseline="central">Layer 2: rule-based verification</text></g>
+<g class="c-green"><rect x="63" y="708" width="125" height="56" rx="8"/><text class="th" x="125" y="727" text-anchor="middle" dominant-baseline="central">Verified</text><text class="ts" x="125" y="746" text-anchor="middle" dominant-baseline="central">Direct evidence</text></g>
+<g class="c-amber"><rect x="206" y="708" width="125" height="56" rx="8"/><text class="th" x="268" y="727" text-anchor="middle" dominant-baseline="central">Partial</text><text class="ts" x="268" y="746" text-anchor="middle" dominant-baseline="central">Varies per run</text></g>
+<g class="c-gray"><rect x="349" y="708" width="125" height="56" rx="8"/><text class="th" x="411" y="727" text-anchor="middle" dominant-baseline="central">Unable</text><text class="ts" x="411" y="746" text-anchor="middle" dominant-baseline="central">No evidence</text></g>
+<g class="c-red"><rect x="492" y="708" width="125" height="56" rx="8"/><text class="th" x="554" y="727" text-anchor="middle" dominant-baseline="central">Rejected</text><text class="ts" x="554" y="746" text-anchor="middle" dominant-baseline="central">Failed re-check</text></g>
+
+<line x1="340" y1="784" x2="340" y2="806" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="200" y="808" width="280" height="52" rx="8"/><text class="th" x="340" y="826" text-anchor="middle" dominant-baseline="central">Scoring</text><text class="ts" x="340" y="845" text-anchor="middle" dominant-baseline="central">Weighted, unable not counted</text></g>
+<line x1="340" y1="860" x2="340" y2="882" class="arr" marker-end="url(#arrow)"/>
+<g class="c-teal"><rect x="200" y="884" width="280" height="52" rx="8"/><text class="th" x="340" y="902" text-anchor="middle" dominant-baseline="central">Report</text><text class="ts" x="340" y="921" text-anchor="middle" dominant-baseline="central">Recommendations, overall score</text></g>
+<line x1="518" y1="910" x2="482" y2="910" class="arr" marker-end="url(#arrow)"/>
+<g class="c-purple"><rect x="520" y="884" width="120" height="52" rx="8"/><text class="th" x="580" y="902" text-anchor="middle" dominant-baseline="central">Layer 3: AI</text><text class="ts" x="580" y="921" text-anchor="middle" dominant-baseline="central">Optional summary</text></g>
+
+<line x1="340" y1="936" x2="340" y2="958" class="arr" marker-end="url(#arrow)"/>
+<path d="M340 947 H170 V958" class="arr" marker-end="url(#arrow)"/>
+<path d="M340 947 H510 V958" class="arr" marker-end="url(#arrow)"/>
+<g class="box"><rect x="95" y="960" width="150" height="44" rx="8"/><text class="th" x="170" y="982" text-anchor="middle" dominant-baseline="central">Dashboard</text></g>
+<g class="box"><rect x="265" y="960" width="150" height="44" rx="8"/><text class="th" x="340" y="982" text-anchor="middle" dominant-baseline="central">PDF download</text></g>
+<g class="box"><rect x="435" y="960" width="150" height="44" rx="8"/><text class="th" x="510" y="982" text-anchor="middle" dominant-baseline="central">JSON export</text></g>
+</g>
+</svg>
+</div>
+</body>
+</html>
